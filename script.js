@@ -109,13 +109,19 @@ const students1 = [
   { name: "E", score: 91 },
 ];
 
-// filteredStudents = sortStudent.filter((student) => {});
+let top3number = [{ name: "", score: 0 }];
 
-// mapStudents1 = filteredStudents.map((student) => {
-//   return student.name;
-// });
+for (i = 0; i < students1.length; i++) {
+  const studentss = students1[i];
 
-// console.log("6.", mapStudents1);
+  if (top3number[0].score < studentss.score) {
+    top3number[2] = top3number[1];
+    top3number[1] = top3number[0];
+    top3number[0] = studentss;
+  }
+}
+
+console.log(top3number);
 
 // 7.
 

@@ -109,19 +109,29 @@ const students1 = [
   { name: "E", score: 91 },
 ];
 
-let top3number = [{ name: "", score: 0 }];
+let top3number = [
+  { name: "", score: 0 },
+  { name: "", score: 0 },
+  { name: "", score: 0 },
+];
 
-for (i = 0; i < students1.length; i++) {
+for (let i = 0; i < students1.length; i++) {
   const studentss = students1[i];
 
   if (top3number[0].score < studentss.score) {
     top3number[2] = top3number[1];
     top3number[1] = top3number[0];
     top3number[0] = studentss;
+  } else if (top3number[1].score < studentss.score) {
+    top3number[2] = top3number[1];
+    top3number[1] = studentss;
+  } else if (top3number[2].score < studentss.score) {
+    top3number[2] = studentss;
   }
 }
 
-console.log(top3number);
+mapTop3 = top3number.map((s) => s.name);
+console.log("6.", mapTop3);
 
 // 7.
 
@@ -147,9 +157,65 @@ console.log("7.", reduceCarts);
 // Өгөгдсөн string төрлийн массив дотроос хамгийн урт үгийг ол.
 const greetings = ["hello", "world", "typescript", "js"];
 
-filteredGreetings = greetings.filter((greeting) => {
-  wordLength = greeting.length;
-  return Math.max(wordLength);
+reduceGreetings = greetings.reduce((a, b) => {
+  return b.length > a.length ? b : a;
 });
 
-console.log(filteredGreetings);
+console.log("8.", reduceGreetings);
+
+// 9.
+
+// Доорх массивын бүх элементүүдийн үсгийн нийлбэрийг ол
+
+const greetingWords = ["hi", "hello", "hey"];
+
+mapGreetin = greetingWords.map((words) => {
+  return words.length;
+});
+
+reduceGreetinWord = mapGreetin.reduce((a, b) => {
+  return a + b;
+});
+
+console.log("9.", reduceGreetinWord);
+
+// 10.
+
+// Хамгийн үнэтэй бүтээгдэхүүнийг харуул
+
+const products = [
+  { name: "Laptop", price: 900 },
+  { name: "Phone", price: 700 },
+  { name: "Monitor", price: 300 },
+];
+
+let highestPrice = { name: "", price: 0 };
+
+for (i = 0; i < products.length; i++) {
+  const eachProduct = products[i];
+
+  if (highestPrice.price < eachProduct.price) {
+    highestPrice = eachProduct;
+  }
+}
+
+console.log("10.", highestPrice);
+
+// 11.
+
+// бүх бүтээгдэхүүний нийлбэр үнийн дүнг ол
+const items = [
+  { name: "Chair", price: 80 },
+  { name: "Desk", price: 120 },
+  { name: "Lamp", price: 150 },
+];
+
+mapItems = items.map((item) => {
+  return item.price;
+});
+
+reduceItems = mapItems.reduce((a, b) => {
+  return a + b;
+});
+
+console.log("11.", reduceItems);
